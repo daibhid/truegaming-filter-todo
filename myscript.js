@@ -1,4 +1,5 @@
-var games = document.getElementsByClassName("game");
+var main_table = document.getElementById("oSmallList");
+var games = main_table.getElementsByClassName("game");
 
 var games_set = new Set();
 var games_text = "";
@@ -48,8 +49,11 @@ Array.from(games_set).sort().forEach(function(game) {
     filter_span.appendChild(br1);
 });
 
+var select_all_span = document.createElement("span");
+filter_div.appendChild(select_all_span);
+
 var br1 = document.createElement("br");
-filter_span.appendChild(br1);
+select_all_span.appendChild(br1);
 
 var select_all = document.createElement("input");
 select_all.setAttribute("type", "checkbox");
@@ -67,9 +71,9 @@ select_all.addEventListener("change", function(event) {
        cb.dispatchEvent(evt);
     });
 }, false);
-filter_span.appendChild(select_all);
+select_all_span.appendChild(select_all);
 
 var label = document.createElement("span");
 label.setAttribute("id", "Select All");
 label.textContent = "Select All";
-filter_span.appendChild(label);
+select_all_span.appendChild(label);
