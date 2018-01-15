@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+  
+    "name": "True network ToDo Filter",
+    "description": "This extension adds a filter on the todo list of TrueAchievements, TrueTrophies and TrueSteamAchievemnts.",
+    "version": "1.0",
+  
+
+    "content_scripts":[
+        {
+            "matches": [
+                "https://truesteamachievements.com/todolist.aspx*", 
+                "https://truesteamachievements.com/gamer/*/todolist",
+                "https://www.trueachievements.com/todolist.aspx*", 
+                "https://www.trueachievements.com/gamer/*/todolist",
+                "https://www.truetrophies.com/todolist.aspx*", 
+                "https://www.truetrophies.com/gamer/*/todolist"
+            ],
+            "js": ["myscript.js"],
+            "run_at": "document_end"
+        }
+    ],
+
+    "permissions": [
+      "activeTab",
+      "storage"
+    ],
+    "converted_from_user_script": true
+  }
