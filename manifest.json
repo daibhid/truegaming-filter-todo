@@ -1,9 +1,9 @@
 {
     "manifest_version": 2,
   
-    "name": "True network ToDo Filter",
+    "name": "TrueGaming Network ToDo Filter",
     "description": "This extension adds a filter on the todo list of TrueAchievements, TrueTrophies and TrueSteamAchievemnts.",
-    "version": "1.0",
+    "version": "1.1",
   
 
     "content_scripts":[
