@@ -3,7 +3,7 @@
   
     "name": "TrueGaming Network ToDo Filter",
     "description": "This extension adds a filter on the todo list of TrueAchievements, TrueTrophies and TrueSteamAchievemnts.",
-    "version": "1.1",
+    "version": "1.2",
   
 
     "content_scripts":[
