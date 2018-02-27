@@ -1,16 +1,26 @@
+chrome.storage.sync.get({
+        countItems: true
+    }, function(items, count_items) {
+        onStorage(items.countItems);
+    });
+
+
+function onStorage(count_items) {    
 var main_table = document.getElementById("oSmallList");
 var games = main_table.getElementsByClassName("game");
 
-var games_set = new Set();
+var games_map = new Map();
 var games_text = "";
 
 for (i = games.length - 1; i >= 0; i--) {
-    games_set.add(games[i].firstChild.textContent);
+    games_map.set(games[i].firstChild.textContent, games_map.has(games[i].firstChild.textContent) ? games_map.get(games[i].firstChild.textContent) + 1 : 1 );
     games_text += games[i].firstChild.textContent + " ";
 }
 
-var filtered_games = games_set.size;
+var filtered_games = games_map.size;
 var filtered_items = games.length;
+var filtered_points = 0;
+var filtered_xp = 0;
 
 var filter_div = document.getElementsByClassName("filter")[0];
 
@@ -26,7 +36,7 @@ var filterd_info_span = document.createElement("span");
 info_span.insertBefore(filter_info_br, info_span.firstChild);
 info_span.insertBefore(filterd_info_span, filter_info_br);
 
-Array.from(games_set).sort().forEach(function (game) {
+Array.from(games_map.keys()).sort().forEach(function (game) {
     var checkbox = document.createElement("input");
     checkbox.setAttribute("type", "checkbox");
     checkbox.setAttribute("id", game);
@@ -62,7 +72,7 @@ Array.from(games_set).sort().forEach(function (game) {
 
     var label = document.createElement("span");
     label.setAttribute("id", game);
-    label.textContent = game;
+    label.textContent = game + (count_items ?  " - [" + games_map.get(game) + "]" : "");
     filter_span.appendChild(label);
 
     var br1 = document.createElement("br");
@@ -99,3 +109,4 @@ var label = document.createElement("span");
 label.setAttribute("id", "Select All");
 label.textContent = "Select All";
 select_all_span.appendChild(label);
+}
