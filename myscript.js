@@ -11,16 +11,18 @@ var games = main_table.getElementsByClassName("game");
 
 var games_map = new Map();
 var games_text = "";
+var filtered_points = 0;
+var filtered_xp = 0;
 
 for (i = games.length - 1; i >= 0; i--) {
     games_map.set(games[i].firstChild.textContent, games_map.has(games[i].firstChild.textContent) ? games_map.get(games[i].firstChild.textContent) + 1 : 1 );
     games_text += games[i].firstChild.textContent + " ";
+    filtered_points += sanitiseAndParse( games[i].parentElement.children[4].textContent);
+    filtered_xp +=  sanitiseAndParse(games[i].parentElement.children[5].firstChild.textContent);
 }
 
 var filtered_games = games_map.size;
 var filtered_items = games.length;
-var filtered_points = 0;
-var filtered_xp = 0;
 
 var filter_div = document.getElementsByClassName("filter")[0];
 
@@ -58,15 +60,20 @@ Array.from(games_map.keys()).sort().forEach(function (game) {
                 element.parentElement.style.display = hide ? '' : 'none';
                 if (hide) {
                     filtered_items++;
+                    filtered_points += sanitiseAndParse( element.parentElement.children[4].textContent);
+                    filtered_xp +=  sanitiseAndParse(element.parentElement.children[5].firstChild.textContent);
                 } else {
                     filtered_items--;
+                    filtered_points -= sanitiseAndParse(element.parentElement.children[4].textContent);
+                    filtered_xp -=  sanitiseAndParse(element.parentElement.children[5].firstChild.textContent);
+
                 }
             }
         });
 
         filterd_info_span.textContent = "There are " + filtered_items + " items from " +
             filtered_games + " filtered games in your To-Do list."
-        //+" In total, they are worth " + filtered_points + " True points (" + filtered_xp + " XP)"
+        +" In total, they are worth " + filtered_points + " True points (" + filtered_xp + " XP)"
     });
     filter_span.appendChild(checkbox);
 
@@ -109,4 +116,13 @@ var label = document.createElement("span");
 label.setAttribute("id", "Select All");
 label.textContent = "Select All";
 select_all_span.appendChild(label);
+}
+
+function sanitiseAndParse(input) {
+    return parseInt(
+        input
+            .replace("(", "")
+            .replace(",", "")
+            .replace(")", "")
+    );
 }
