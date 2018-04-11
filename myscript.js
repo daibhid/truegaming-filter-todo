@@ -73,7 +73,7 @@ Array.from(games_map.keys()).sort().forEach(function (game) {
 
         filterd_info_span.textContent = "There are " + filtered_items + " items from " +
             filtered_games + " filtered games in your To-Do list."
-        +" In total, they are worth " + filtered_points + " True points (" + filtered_xp + " XP)"
+        +" In total, they are worth " + Number(filtered_points).toLocaleString() + " True points (" + Number(filtered_xp).toLocaleString() + " XP)"
     });
     filter_span.appendChild(checkbox);
 
