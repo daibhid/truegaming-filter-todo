@@ -16,7 +16,7 @@
                 "https://www.truetrophies.com/todolist.aspx*", 
                 "https://www.truetrophies.com/gamer/*/todolist"
             ],
-            "js": ["myscript.js"],
+            "js": ["tt-todo-filter.js"],
             "run_at": "document_end"
         }
     ],
