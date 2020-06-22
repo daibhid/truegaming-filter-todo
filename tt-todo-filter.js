@@ -24,13 +24,16 @@ function onStorage(count_items) {
     var filtered_games = games_map.size;
     var filtered_items = games.length;
 
-    var filter_div = document.getElementsByClassName("filter")[0];
+    var filter_div = document.getElementById("main");
+    var tt_todo_div = document.createElement("div");
+    tt_todo_div.setAttribute("class", "tt-todo-div");
+    filter_div.insertBefore(tt_todo_div, document.getElementsByClassName("information")[0]);
 
     var horizontal_rule = document.createElement("hr");
-    filter_div.appendChild(horizontal_rule);
+    tt_todo_div.appendChild(horizontal_rule);
 
     var filter_span = document.createElement("span");
-    filter_div.appendChild(filter_span);
+    tt_todo_div.appendChild(filter_span);
 
     var info_span = document.getElementsByClassName("information")[0];
     var filter_info_br = document.createElement("br");
@@ -88,10 +91,10 @@ function onStorage(count_items) {
 
     // Platform checkboxes
     var platform_hr = document.createElement("hr");
-    filter_div.appendChild(platform_hr);
+    tt_todo_div.appendChild(platform_hr);
 
     var platform_span = document.createElement("span");
-    filter_div.appendChild(platform_span);
+    tt_todo_div.appendChild(platform_span);
 
     // PS3
     var ps3_checkbox = document.createElement("input");
@@ -151,10 +154,10 @@ function onStorage(count_items) {
 
     // Select all and breaks around it
     var hr2 = document.createElement("hr");
-    filter_div.appendChild(hr2);
+    tt_todo_div.appendChild(hr2);
 
     var select_all_span = document.createElement("span");
-    filter_div.appendChild(select_all_span);
+    tt_todo_div.appendChild(select_all_span);
 
     var select_all = document.createElement("input");
     select_all.setAttribute("type", "checkbox");
