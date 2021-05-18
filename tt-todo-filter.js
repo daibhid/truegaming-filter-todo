@@ -1,11 +1,7 @@
-chrome.storage.sync.get({
-        countItems: true
-    }, function(items, count_items) {
-        onStorage(items.countItems);
-    });
 
+showCheckboxes(true)
 
-function onStorage(count_items) {
+function showCheckboxes(count_items) {
     var main_table = document.getElementById("oSmallList");
     var games = main_table.getElementsByClassName("game");
 

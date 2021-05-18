@@ -16,19 +16,7 @@
                 "https://www.truetrophies.com/todolist.aspx*", 
                 "https://www.truetrophies.com/gamer/*/todolist"
             ],
-            "js": ["tt-todo-filter.js"],
-            "run_at": "document_end"
+            "js": ["tt-todo-filter.js"]
         }
-    ],
-
-    "permissions": [
-      "activeTab",
-      "storage"
-    ],
-    "options_page": "options.html",
-    "options_ui":{
-        "page": "options.html",
-        "chrome_style": true
-    },
-    "converted_from_user_script": true
+    ]
   }
