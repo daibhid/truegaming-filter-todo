@@ -20,7 +20,7 @@ function showCheckboxes(count_items) {
     var filtered_games = games_map.size;
     var filtered_items = games.length;
 
-    var filter_div = document.getElementById("main");
+    var filter_div = document.getElementsByTagName("main")[0];
     var tt_todo_div = document.createElement("div");
     tt_todo_div.setAttribute("class", "tt-todo-div");
     filter_div.insertBefore(tt_todo_div, document.getElementsByClassName("information")[0]);
@@ -78,6 +78,7 @@ function showCheckboxes(count_items) {
 
         var label = document.createElement("span");
         label.setAttribute("id", game);
+        label.setAttribute("style", "margin-left: 2.5px;")
         label.textContent = game + (count_items ?  " - [" + games_map.get(game) + "]" : "");
         filter_span.appendChild(label);
 
@@ -115,6 +116,7 @@ function showCheckboxes(count_items) {
     
     var ps3_label = document.createElement("span");
     ps3_label.setAttribute("id", "PS3");
+    ps3_label.setAttribute("style", "margin-left: 2.5px;")
     ps3_label.textContent = "PS3";
     platform_span.appendChild(ps3_label);
 
@@ -144,6 +146,7 @@ function showCheckboxes(count_items) {
     
     var ps4_label = document.createElement("span");
     ps4_label.setAttribute("id", "PS4");
+    ps4_label.setAttribute("style", "margin-left: 2.5px;")
     ps4_label.textContent = "PS4";
     platform_span.appendChild(ps4_label);
 
@@ -177,6 +180,7 @@ function showCheckboxes(count_items) {
 
     var label = document.createElement("span");
     label.setAttribute("id", "Select All");
+    label.setAttribute("style", "margin-left: 2.5px;")
     label.textContent = "Select All";
     select_all_span.appendChild(label);
 }
