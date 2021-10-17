@@ -11,10 +11,10 @@ function showCheckboxes(count_items) {
     var filtered_xp = 0;
 
     for (i = games.length - 1; i >= 0; i--) {
-        games_map.set(games[i].firstChild.textContent, games_map.has(games[i].firstChild.textContent) ? games_map.get(games[i].firstChild.textContent) + 1 : 1 );
+        games_map.set(games[i].firstChild.textContent, games_map.has(games[i].firstChild.textContent) ? games_map.get(games[i].firstChild.textContent) + 1 : 1);
         games_text += games[i].firstChild.textContent + " ";
-        filtered_points += sanitiseAndParse( games[i].parentElement.children[4].textContent);
-        filtered_xp +=  sanitiseAndParse(games[i].parentElement.children[5].firstChild.textContent);
+        filtered_points += sanitiseAndParse(games[i].parentElement.children[4].textContent);
+        filtered_xp += sanitiseAndParse(games[i].parentElement.children[5].firstChild.textContent);
     }
 
     var filtered_games = games_map.size;
@@ -59,12 +59,12 @@ function showCheckboxes(count_items) {
                     element.parentElement.style.display = hide ? '' : 'none';
                     if (hide) {
                         filtered_items++;
-                        filtered_points += sanitiseAndParse( element.parentElement.children[4].textContent);
-                        filtered_xp +=  sanitiseAndParse(element.parentElement.children[5].firstChild.textContent);
+                        filtered_points += sanitiseAndParse(element.parentElement.children[4].textContent);
+                        filtered_xp += sanitiseAndParse(element.parentElement.children[5].firstChild.textContent);
                     } else {
                         filtered_items--;
                         filtered_points -= sanitiseAndParse(element.parentElement.children[4].textContent);
-                        filtered_xp -=  sanitiseAndParse(element.parentElement.children[5].firstChild.textContent);
+                        filtered_xp -= sanitiseAndParse(element.parentElement.children[5].firstChild.textContent);
 
                     }
                 }
@@ -72,14 +72,14 @@ function showCheckboxes(count_items) {
 
             filterd_info_span.textContent = "There are " + filtered_items + " items from " +
                 filtered_games + " filtered games in your To-Do list."
-            +" In total, they are worth " + Number(filtered_points).toLocaleString() + " True points (" + Number(filtered_xp).toLocaleString() + " XP)"
+                + " In total, they are worth " + Number(filtered_points).toLocaleString() + " True points (" + Number(filtered_xp).toLocaleString() + " XP)"
         });
         filter_span.appendChild(checkbox);
 
         var label = document.createElement("span");
         label.setAttribute("id", game);
         label.setAttribute("style", "margin-left: 2.5px;")
-        label.textContent = game + (count_items ?  " - [" + games_map.get(game) + "]" : "");
+        label.textContent = game + (count_items ? " - [" + games_map.get(game) + "]" : "");
         filter_span.appendChild(label);
 
         var br1 = document.createElement("br");
@@ -99,21 +99,21 @@ function showCheckboxes(count_items) {
     ps3_checkbox.setAttribute("id", "PS3");
     ps3_checkbox.setAttribute("value", "PS3");
     ps3_checkbox.setAttribute("checked", "");
-    ps3_checkbox.addEventListener("change", function(event){
+    ps3_checkbox.addEventListener("change", function (event) {
         var all_checkboxes = filter_span.children;
 
         var evt = document.createEvent("HTMLEvents");
         evt.initEvent("change", false, true);
 
         Array.from(all_checkboxes).forEach(cb => {
-            if(cb.id.includes('PS3')){
+            if (cb.id.includes('PS3')) {
                 cb.checked = this.checked;
                 cb.dispatchEvent(evt);
             }
         });
     }, false);
     platform_span.appendChild(ps3_checkbox);
-    
+
     var ps3_label = document.createElement("span");
     ps3_label.setAttribute("id", "PS3");
     ps3_label.setAttribute("style", "margin-left: 2.5px;")
@@ -129,21 +129,21 @@ function showCheckboxes(count_items) {
     ps4_checkbox.setAttribute("id", "PS4");
     ps4_checkbox.setAttribute("value", "PS4");
     ps4_checkbox.setAttribute("checked", "");
-    ps4_checkbox.addEventListener("change", function(event){
+    ps4_checkbox.addEventListener("change", function (event) {
         var all_checkboxes = filter_span.children;
 
         var evt = document.createEvent("HTMLEvents");
         evt.initEvent("change", false, true);
 
         Array.from(all_checkboxes).forEach(cb => {
-            if(!cb.id.includes('PS3')){
+            if (!cb.id.includes('PS3')) {
                 cb.checked = this.checked;
                 cb.dispatchEvent(evt);
             }
         });
     }, false);
     platform_span.appendChild(ps4_checkbox);
-    
+
     var ps4_label = document.createElement("span");
     ps4_label.setAttribute("id", "PS4");
     ps4_label.setAttribute("style", "margin-left: 2.5px;")
